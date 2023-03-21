@@ -38,12 +38,12 @@ app.use("/employee", employee_route_1.employeeRouter);
 app.use(errorHandler_1.errorHandler);
 //swagger documentation
 var specs = swaggerJsDoc(swaggerOptions_1.options);
-var customeSwaggerStyles = {
-    customCssUrl: [
-        "https://raw.githubusercontent.com/deywersonp/ghibli-50-api/main/src/public/css/swagger-ui.css",
-    ],
+var options = {
+    customCssUrl: "/public/swagger-ui.css",
+    customSiteTitle: "The Words That I Know API - Swagger",
 };
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, customeSwaggerStyles));
+app.use("/public", express_1.default.static("public"));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 // app listener
 app.listen(process.env.PORT || PORT, function () {
     return console.log("Backend server is running on port ".concat(PORT));

@@ -10,7 +10,7 @@ import connectDB from "./config/db";
 
 import { employeeRouter } from "./modules/employee/routers/employee_route";
 import { healthcheckRouter } from "./modules/healthcheck/routers/healthcheck_route";
-import { options } from "./utils/swaggerOptions";
+import { options as swaggerDocument } from "./utils/swaggerOptions";
 import { errorHandler } from "./utils/errorHandler";
 
 //defined port
@@ -46,19 +46,15 @@ app.use("/employee", employeeRouter);
 app.use(errorHandler);
 
 //swagger documentation
-const specs = swaggerJsDoc(options);
+const specs = swaggerJsDoc(swaggerDocument);
 
-const customeSwaggerStyles = {
-  customCssUrl: [
-    "https://raw.githubusercontent.com/deywersonp/ghibli-50-api/main/src/public/css/swagger-ui.css",
-  ],
+const options = {
+  customCssUrl: "/public/swagger-ui.css",
+  customSiteTitle: "The Words That I Know API - Swagger",
 };
 
-app.use(
-  "/api-docs",
-  swaggerUI.serve,
-  swaggerUI.setup(specs, customeSwaggerStyles)
-);
+app.use("/public", express.static("public"));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 
 // app listener
 app.listen(process.env.PORT || PORT, () =>
