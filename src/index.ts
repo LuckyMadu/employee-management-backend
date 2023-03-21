@@ -47,10 +47,17 @@ app.use(errorHandler);
 
 //swagger documentation
 const specs = swaggerJsDoc(options);
+
+const customeSwaggerStyles = {
+  customCssUrl: [
+    "https://raw.githubusercontent.com/deywersonp/ghibli-50-api/main/src/public/css/swagger-ui.css",
+  ],
+};
+
 app.use(
   "/api-docs",
   swaggerUI.serve,
-  swaggerUI.setup(specs, { explorer: true })
+  swaggerUI.setup(specs, customeSwaggerStyles)
 );
 
 // app listener

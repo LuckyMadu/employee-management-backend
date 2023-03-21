@@ -38,7 +38,12 @@ app.use("/employee", employee_route_1.employeeRouter);
 app.use(errorHandler_1.errorHandler);
 //swagger documentation
 var specs = swaggerJsDoc(swaggerOptions_1.options);
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, { explorer: true }));
+var customeSwaggerStyles = {
+    customCssUrl: [
+        "https://raw.githubusercontent.com/deywersonp/ghibli-50-api/main/src/public/css/swagger-ui.css",
+    ],
+};
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, customeSwaggerStyles));
 // app listener
 app.listen(process.env.PORT || PORT, function () {
     return console.log("Backend server is running on port ".concat(PORT));
