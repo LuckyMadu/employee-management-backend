@@ -1,8 +1,3 @@
-import path from "path";
-
-const ROOT_FOLDER = path.join(__dirname, "../..");
-const SRC_FOLDER = path.join(ROOT_FOLDER, "src");
-
 export const options = {
   definition: {
     openapi: "3.0.0",
@@ -62,7 +57,7 @@ export const options = {
     ],
   },
   apis: [
-    `${SRC_FOLDER}/modules/healthcheck/routers/healthcheck_route.ts`,
-    `${SRC_FOLDER}/modules/employee/routers/employee_route.ts`,
+    "./src/modules/healthcheck/routers/healthcheck_route.ts",
+    "./src/modules/employee/routers/employee_route.ts",
   ],
 };

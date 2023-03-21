@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var dotenv_1 = __importDefault(require("dotenv"));
-var helmet_1 = __importDefault(require("helmet"));
 var path_1 = __importDefault(require("path"));
 var swaggerJsDoc = require("swagger-jsdoc");
 var swaggerUI = require("swagger-ui-express");
@@ -24,11 +23,6 @@ var SRC_FOLDER = path_1.default.join(ROOT_FOLDER, "src");
 dotenv_1.default.config();
 //connect database
 (0, db_1.default)();
-var cspDefaults = helmet_1.default.contentSecurityPolicy.getDefaultDirectives();
-delete cspDefaults["upgrade-insecure-requests"];
-app.use((0, helmet_1.default)({
-    contentSecurityPolicy: { directives: cspDefaults },
-}));
 // enable cors
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
@@ -43,7 +37,7 @@ app.use(errorHandler_1.errorHandler);
 var specs = swaggerJsDoc(swaggerOptions_1.options);
 var options = {
     customCssUrl: "/public/swagger-ui.css",
-    customSiteTitle: "The Words That I Know API - Swagger",
+    customSiteTitle: "Employee Mgt API",
 };
 app.use("/public", express_1.default.static(path_1.default.join(SRC_FOLDER, "public")));
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));

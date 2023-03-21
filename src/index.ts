@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import helmet from "helmet";
 import path from "path";
 
 const swaggerJsDoc = require("swagger-jsdoc");
@@ -27,15 +26,6 @@ dotenv.config();
 //connect database
 connectDB();
 
-const cspDefaults = helmet.contentSecurityPolicy.getDefaultDirectives();
-delete cspDefaults["upgrade-insecure-requests"];
-
-app.use(
-  helmet({
-    contentSecurityPolicy: { directives: cspDefaults },
-  })
-);
-
 // enable cors
 app.use(cors());
 app.use(express.json());
@@ -54,7 +44,7 @@ const specs = swaggerJsDoc(swaggerDocument);
 
 const options = {
   customCssUrl: "/public/swagger-ui.css",
-  customSiteTitle: "The Words That I Know API - Swagger",
+  customSiteTitle: "Employee Mgt API",
 };
 
 app.use("/public", express.static(path.join(SRC_FOLDER, "public")));
