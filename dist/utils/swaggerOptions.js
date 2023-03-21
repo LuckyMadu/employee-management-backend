@@ -1,6 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.options = void 0;
+var path_1 = __importDefault(require("path"));
+var ROOT_FOLDER = path_1.default.join(__dirname, "../..");
+var SRC_FOLDER = path_1.default.join(ROOT_FOLDER, "src");
 exports.options = {
     definition: {
         openapi: "3.0.0",
@@ -59,7 +65,7 @@ exports.options = {
         ],
     },
     apis: [
-        "./src/modules/healthcheck/routers/healthcheck_route.ts",
-        "./src/modules/employee/routers/employee_route.ts",
+        "".concat(SRC_FOLDER, "/modules/healthcheck/routers/healthcheck_route.ts"),
+        "".concat(SRC_FOLDER, "/modules/employee/routers/employee_route.ts"),
     ],
 };
