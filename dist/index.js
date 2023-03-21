@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var dotenv_1 = __importDefault(require("dotenv"));
+var helmet_1 = __importDefault(require("helmet"));
 var swaggerJsDoc = require("swagger-jsdoc");
 var swaggerUI = require("swagger-ui-express");
 var db_1 = __importDefault(require("./config/db"));
@@ -20,6 +21,11 @@ var app = (0, express_1.default)();
 dotenv_1.default.config();
 //connect database
 (0, db_1.default)();
+var cspDefaults = helmet_1.default.contentSecurityPolicy.getDefaultDirectives();
+delete cspDefaults["upgrade-insecure-requests"];
+app.use((0, helmet_1.default)({
+    contentSecurityPolicy: { directives: cspDefaults },
+}));
 // enable cors
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());

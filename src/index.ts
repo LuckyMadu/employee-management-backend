@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import helmet from "helmet";
 
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
@@ -21,6 +22,15 @@ dotenv.config();
 
 //connect database
 connectDB();
+
+const cspDefaults = helmet.contentSecurityPolicy.getDefaultDirectives();
+delete cspDefaults["upgrade-insecure-requests"];
+
+app.use(
+  helmet({
+    contentSecurityPolicy: { directives: cspDefaults },
+  })
+);
 
 // enable cors
 app.use(cors());
