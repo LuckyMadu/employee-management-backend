@@ -4,7 +4,7 @@
   "description": "nodejs application of employee management",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon",
+    "start": "node build/index.js",
     "build": "tsc"
   },
   "author": "",
