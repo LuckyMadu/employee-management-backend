@@ -1,5 +1,10 @@
 {
-  "builds": [],
+  "builds": [
+    {
+      "src": "^/(.*)$",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "^/(.*)$",
