@@ -46,8 +46,7 @@ var options = {
     customSiteTitle: "The Words That I Know API - Swagger",
 };
 app.use("/public", express_1.default.static(path_1.default.join(SRC_FOLDER, "public")));
-app.use("/api-docs", swaggerUI.serve);
-app.get("/api-docs", swaggerUI.setup(specs, options));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 // app listener
 app.listen(process.env.PORT || PORT, function () {
     return console.log("Backend server is running on port ".concat(PORT));

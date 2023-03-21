@@ -58,8 +58,7 @@ const options = {
 };
 
 app.use("/public", express.static(path.join(SRC_FOLDER, "public")));
-app.use("/api-docs", swaggerUI.serve);
-app.get("/api-docs", swaggerUI.setup(specs, options));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 
 // app listener
 app.listen(process.env.PORT || PORT, () =>
