@@ -54,11 +54,7 @@ exports.options = {
         servers: [
             {
                 url: "https://employee-management-backend.vercel.app",
-                description: "Production server",
-            },
-            {
-                url: "http://localhost:3000",
-                description: "Development server",
+                description: "server",
             },
         ],
     },
