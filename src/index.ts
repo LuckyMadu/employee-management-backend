@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import path from "path";
 
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
@@ -16,6 +17,9 @@ import { errorHandler } from "./utils/errorHandler";
 //defined port
 const PORT = 3000;
 const app = express();
+
+const ROOT_FOLDER = path.join(__dirname, "..");
+const SRC_FOLDER = path.join(ROOT_FOLDER, "src");
 
 // configure env variables
 dotenv.config();
@@ -53,8 +57,9 @@ const options = {
   customSiteTitle: "The Words That I Know API - Swagger",
 };
 
-app.use("/public", express.static("public"));
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
+app.use("/public", express.static(path.join(SRC_FOLDER, "public")));
+app.use("/api-docs", swaggerUI.serve);
+app.get("/api-docs", swaggerUI.setup(specs, options));
 
 // app listener
 app.listen(process.env.PORT || PORT, () =>
