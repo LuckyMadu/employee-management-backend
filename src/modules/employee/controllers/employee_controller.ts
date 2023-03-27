@@ -41,10 +41,19 @@ const addEmployeeController = async (
       {}
     );
     res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
-  } catch (err) {
+  } catch (err: any) {
+    console.log(err);
+    const response = commonResponse(
+      commonResponseType.RESPONSE_SUCCESS.FALSE,
+      {},
+      commonResponseType.RESPONSE_MESSAGES.VALIDATION_ERROR,
+      {
+        message: err.message,
+      }
+    );
     res
-      .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
-      .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+      .status(commonResponseType.HTTP_RESPONSE.HTTP_VALIDATION_ERROR)
+      .json(response);
   }
 };
 

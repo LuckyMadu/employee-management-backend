@@ -26,20 +26,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.addEmployeeValidation = void 0;
 var Joi = require("joi");
 var commonResponseType = __importStar(require("../../../static/static.json"));
+var response_1 = require("../../../utils/response");
 var addEmployeeValidation = function (req, res, next) {
     var schema = Joi.object({
-        first_name: Joi.string().required().label("Firs name is required"),
-        last_name: Joi.string().required().label("Last name is required"),
-        email: Joi.string().required().label("Email is required"),
-        number: Joi.string().required().label("Phone number is required"),
-        gender: Joi.string().required().label("Gender is required"),
+        first_name: Joi.string().required().messages({
+            "any.required": "First name is required",
+        }),
+        last_name: Joi.string().required().messages({
+            "any.required": "Last name is required",
+        }),
+        email: Joi.string().required().messages({
+            "any.required": "Email is required",
+        }),
+        number: Joi.string().required().messages({
+            "any.required": "Phone Number is required",
+        }),
+        gender: Joi.string().required().messages({
+            "any.required": "Gender is required",
+        }),
+        photo: Joi.string().optional(),
     });
-    var result = schema.validate(req.body);
-    if (result.error) {
-        console.log(result.error.message);
+    var error = schema.validate(req.body).error;
+    if (error) {
+        console.log(error);
+        var response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.FALSE, {}, commonResponseType.RESPONSE_MESSAGES.VALIDATION_ERROR, {
+            message: error.details[0].message,
+        });
         res
             .status(commonResponseType.HTTP_RESPONSE.HTTP_VALIDATION_ERROR)
-            .send(result.error.message);
+            .json(response);
     }
     else {
         next();

@@ -43,6 +43,7 @@ app.use(errorHandler);
 const specs = swaggerJsDoc(swaggerDocument);
 
 const options = {
+  explorer: true,
   customCssUrl: "/public/swagger-ui.css",
   customSiteTitle: "Employee Mgt API",
 };

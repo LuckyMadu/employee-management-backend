@@ -88,7 +88,7 @@ var getAllEmployeeController = function (req, res) { return __awaiter(void 0, vo
     });
 }); };
 var addEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var requestBody, data, response, err_2;
+    var requestBody, data, response, err_2, response;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -102,9 +102,13 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
                 return [3 /*break*/, 3];
             case 2:
                 err_2 = _a.sent();
+                console.log(err_2);
+                response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.FALSE, {}, commonResponseType.RESPONSE_MESSAGES.VALIDATION_ERROR, {
+                    message: err_2.message,
+                });
                 res
-                    .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
-                    .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+                    .status(commonResponseType.HTTP_RESPONSE.HTTP_VALIDATION_ERROR)
+                    .json(response);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

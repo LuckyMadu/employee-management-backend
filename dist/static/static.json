@@ -14,7 +14,8 @@
         "EMPLOYEE_FETCH_SUCCESS": "Employee list fetched successfully",
         "EMPLOYEE_REGISTER_SUCCESS": "Employee registered successfully",
         "EMPLOYEE_UPDATE_SUCCESS": "Employee updated successfully",
-        "EMPLOYEE_REMOVE_SUCCESS": "User deleted successfully"
+        "EMPLOYEE_REMOVE_SUCCESS": "User deleted successfully",
+        "VALIDATION_ERROR": "Validation Error"
     },
     "LOGGER": {
         "INFO": "info",

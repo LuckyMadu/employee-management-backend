@@ -36,6 +36,7 @@ app.use(errorHandler_1.errorHandler);
 //swagger documentation
 var specs = swaggerJsDoc(swaggerOptions_1.options);
 var options = {
+    explorer: true,
     customCssUrl: "/public/swagger-ui.css",
     customSiteTitle: "Employee Mgt API",
 };
