@@ -24,6 +24,6 @@ var router = express_1.default.Router();
  *         description: Some server error!
  *
  */
-router.get("/", function (req, res) { return res.json("API is working!!!"); });
+router.get("/", function (req, res) { return res.status(200).json("API is working!!!"); });
 var healthcheckRouter = router;
 exports.healthcheckRouter = healthcheckRouter;

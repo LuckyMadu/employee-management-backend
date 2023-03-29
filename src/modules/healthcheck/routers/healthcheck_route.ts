@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
 /**
  * @swagger
@@ -18,7 +18,7 @@ const router = express.Router();
  *         description: Some server error!
  *
  */
-router.get("/", (req,res) => res.json("API is working!!!"));
+router.get("/", (req, res) => res.status(200).json("API is working!!!"));
 
-const healthcheckRouter = router
-export {healthcheckRouter}
+const healthcheckRouter = router;
+export { healthcheckRouter };

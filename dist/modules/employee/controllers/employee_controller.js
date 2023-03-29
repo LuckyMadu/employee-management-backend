@@ -71,6 +71,7 @@ var getAllEmployeeController = function (req, res) { return __awaiter(void 0, vo
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
+                console.info("Employee lists endpoint...");
                 return [4 /*yield*/, employee_service_1.default.getAllEmployeeService()];
             case 1:
                 data = _a.sent();

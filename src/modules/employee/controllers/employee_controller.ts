@@ -10,8 +10,9 @@ const getAllEmployeeController = async (
   res: Express.Response
 ) => {
   try {
-    const data = await EmployeeService.getAllEmployeeService();
+    console.info("Employee lists endpoint...");
 
+    const data = await EmployeeService.getAllEmployeeService();
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,
       data,
