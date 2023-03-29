@@ -6,6 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var employee_repo_1 = __importDefault(require("../repository/employee_repo"));
 // fetch all employees
 var getAllEmployeeService = function () { return employee_repo_1.default.getAllEmployeeRepo(); };
+// fetch single employees
+var getSingleEmployeeService = function (empId) {
+    return employee_repo_1.default.getSingleEmployeeRepo(empId);
+};
 // add employee
 var addEmployeeService = function (requestBody) {
     return employee_repo_1.default.addEmployeeRepo(requestBody);
@@ -20,6 +24,7 @@ var deleteEmployeeService = function (empId) {
 };
 exports.default = {
     getAllEmployeeService: getAllEmployeeService,
+    getSingleEmployeeService: getSingleEmployeeService,
     addEmployeeService: addEmployeeService,
     updateEmployeeService: updateEmployeeService,
     deleteEmployeeService: deleteEmployeeService,

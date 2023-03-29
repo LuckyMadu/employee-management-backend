@@ -28,6 +28,40 @@ router.get("/list", EmployeeController.getAllEmployeeController);
  * @swagger
  * tags:
  *   name: Employee
+ *   description: Get single employee
+ * /employee/{empId}:
+ *   delete:
+ *     summary: Get single employee
+ *     tags: [Employee]
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: The Employee ID
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/employee'
+ *     responses:
+ *       200:
+ *         description: Employee fetched successfully!
+ *       400:
+ *         description: Employee fetched failed!
+ *       500:
+ *         description: Some server error!
+ *
+ */
+router.get("/:empId", EmployeeController.getSingleEmployeeController);
+
+/**
+ * @swagger
+ * tags:
+ *   name: Employee
  *   description: Add new employee
  * /employee:
  *   post:
@@ -92,7 +126,7 @@ router.put("/:empId", EmployeeController.updateEmployeeController);
  * @swagger
  * tags:
  *   name: Employee
- *   description: Update employee
+ *   description: Delete employee
  * /employee/{empId}:
  *   delete:
  *     summary: Delete employee

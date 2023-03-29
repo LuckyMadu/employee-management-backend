@@ -27,6 +27,30 @@ const getAllEmployeeController = async (
   }
 };
 
+const getSingleEmployeeController = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  try {
+    const { empId } = req.params;
+
+    console.info("Single Employee endpoint...");
+
+    const data = await EmployeeService.getSingleEmployeeService(empId);
+    const response = commonResponse(
+      commonResponseType.RESPONSE_SUCCESS.TRUE,
+      { data },
+      commonResponseType.RESPONSE_MESSAGES.SINGLE_EMPLOYEE_FETCH_SUCCESS,
+      {}
+    );
+    res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
+  } catch (err) {
+    res
+      .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+      .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+  }
+};
+
 const addEmployeeController = async (
   req: Express.Request,
   res: Express.Response
@@ -63,7 +87,7 @@ const updateEmployeeController = async (
   res: Express.Response
 ) => {
   try {
-    const empId = req.params.empId;
+    const { empId } = req.params;
     const requestBody = req.body;
     const data = await EmployeeService.updateEmployeeService(
       empId,
@@ -89,7 +113,7 @@ const deleteEmployeeController = async (
   res: Express.Response
 ) => {
   try {
-    const empId = req.params.empId;
+    const { empId } = req.params;
     const data = await EmployeeService.deleteEmployeeService(empId);
 
     const response = commonResponse(
@@ -108,6 +132,7 @@ const deleteEmployeeController = async (
 
 export default {
   getAllEmployeeController,
+  getSingleEmployeeController,
   addEmployeeController,
   updateEmployeeController,
   deleteEmployeeController,

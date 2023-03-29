@@ -88,8 +88,32 @@ var getAllEmployeeController = function (req, res) { return __awaiter(void 0, vo
         }
     });
 }); };
+var getSingleEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var empId, data, response, err_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                empId = req.params.empId;
+                console.info("Single Employee endpoint...");
+                return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
+            case 1:
+                data = _a.sent();
+                response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, { data: data }, commonResponseType.RESPONSE_MESSAGES.SINGLE_EMPLOYEE_FETCH_SUCCESS, {});
+                res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
+                return [3 /*break*/, 3];
+            case 2:
+                err_2 = _a.sent();
+                res
+                    .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+                    .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
 var addEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var requestBody, data, response, err_2, response;
+    var requestBody, data, response, err_3, response;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -102,10 +126,10 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
                 return [3 /*break*/, 3];
             case 2:
-                err_2 = _a.sent();
-                console.log(err_2);
+                err_3 = _a.sent();
+                console.log(err_3);
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.FALSE, {}, commonResponseType.RESPONSE_MESSAGES.VALIDATION_ERROR, {
-                    message: err_2.message,
+                    message: err_3.message,
                 });
                 res
                     .status(commonResponseType.HTTP_RESPONSE.HTTP_VALIDATION_ERROR)
@@ -116,7 +140,7 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
     });
 }); };
 var updateEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var empId, requestBody, data, response, err_3;
+    var empId, requestBody, data, response, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -130,7 +154,7 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
                 return [3 /*break*/, 3];
             case 2:
-                err_3 = _a.sent();
+                err_4 = _a.sent();
                 res
                     .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                     .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
@@ -140,7 +164,7 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
     });
 }); };
 var deleteEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var empId, data, response, err_4;
+    var empId, data, response, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -153,7 +177,7 @@ var deleteEmployeeController = function (req, res) { return __awaiter(void 0, vo
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
                 return [3 /*break*/, 3];
             case 2:
-                err_4 = _a.sent();
+                err_5 = _a.sent();
                 res
                     .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                     .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
@@ -164,6 +188,7 @@ var deleteEmployeeController = function (req, res) { return __awaiter(void 0, vo
 }); };
 exports.default = {
     getAllEmployeeController: getAllEmployeeController,
+    getSingleEmployeeController: getSingleEmployeeController,
     addEmployeeController: addEmployeeController,
     updateEmployeeController: updateEmployeeController,
     deleteEmployeeController: deleteEmployeeController,

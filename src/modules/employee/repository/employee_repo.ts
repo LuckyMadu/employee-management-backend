@@ -5,13 +5,19 @@ const getAllEmployeeRepo = async () => {
   return Employee.find({});
 };
 
+const getSingleEmployeeRepo = async (empId: string) => {
+  return Employee.findOne({
+    _id: empId,
+  });
+};
+
 const addEmployeeRepo = async (requestBody: EmployeeDTO) => {
   return Employee.create(requestBody);
 };
 
 const updateEmployeeRepo = async (empId: string, requestBody: EmployeeDTO) => {
   return Employee.findOneAndUpdate(
-    { id: empId },
+    { _id: empId },
     { $set: requestBody },
     { new: true }
   );
@@ -19,12 +25,13 @@ const updateEmployeeRepo = async (empId: string, requestBody: EmployeeDTO) => {
 
 const deleteEmployeeRepo = async (empId: string) => {
   return Employee.deleteOne({
-    id: empId,
+    _id: empId,
   });
 };
 
 export default {
   getAllEmployeeRepo,
+  getSingleEmployeeRepo,
   addEmployeeRepo,
   updateEmployeeRepo,
   deleteEmployeeRepo,

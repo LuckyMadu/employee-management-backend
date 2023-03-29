@@ -12,6 +12,7 @@
     "RESPONSE_MESSAGES": {
         "INTERNAL_SERVER_ERROR": "Internal Server Error | Invalid Request",
         "EMPLOYEE_FETCH_SUCCESS": "Employee list fetched successfully",
+        "SINGLE_EMPLOYEE_FETCH_SUCCESS": "Single Employee fetched successfully",
         "EMPLOYEE_REGISTER_SUCCESS": "Employee registered successfully",
         "EMPLOYEE_UPDATE_SUCCESS": "Employee updated successfully",
         "EMPLOYEE_REMOVE_SUCCESS": "User deleted successfully",

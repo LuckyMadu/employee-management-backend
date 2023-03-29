@@ -42,6 +42,13 @@ var getAllEmployeeRepo = function () { return __awaiter(void 0, void 0, void 0, 
         return [2 /*return*/, Employee_1.Employee.find({})];
     });
 }); };
+var getSingleEmployeeRepo = function (empId) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        return [2 /*return*/, Employee_1.Employee.findOne({
+                _id: empId,
+            })];
+    });
+}); };
 var addEmployeeRepo = function (requestBody) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/, Employee_1.Employee.create(requestBody)];
@@ -49,18 +56,19 @@ var addEmployeeRepo = function (requestBody) { return __awaiter(void 0, void 0, 
 }); };
 var updateEmployeeRepo = function (empId, requestBody) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        return [2 /*return*/, Employee_1.Employee.findOneAndUpdate({ id: empId }, { $set: requestBody }, { new: true })];
+        return [2 /*return*/, Employee_1.Employee.findOneAndUpdate({ _id: empId }, { $set: requestBody }, { new: true })];
     });
 }); };
 var deleteEmployeeRepo = function (empId) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/, Employee_1.Employee.deleteOne({
-                id: empId,
+                _id: empId,
             })];
     });
 }); };
 exports.default = {
     getAllEmployeeRepo: getAllEmployeeRepo,
+    getSingleEmployeeRepo: getSingleEmployeeRepo,
     addEmployeeRepo: addEmployeeRepo,
     updateEmployeeRepo: updateEmployeeRepo,
     deleteEmployeeRepo: deleteEmployeeRepo,
