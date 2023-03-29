@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Employee = void 0;
 var mongoose_1 = require("mongoose");
 var employeeSchema = new mongoose_1.Schema({
-    first_name: {
+    firstName: {
         type: String,
     },
-    last_name: {
+    lastName: {
         type: String,
     },
     email: {
         type: String,
     },
-    number: {
+    phone: {
         type: String,
     },
     gender: {

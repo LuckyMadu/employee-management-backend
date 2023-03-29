@@ -11,16 +11,16 @@ exports.options = {
                         id: {
                             type: "string",
                         },
-                        first_name: {
+                        firstName: {
                             type: "string",
                         },
-                        last_name: {
+                        lastName: {
                             type: "string",
                         },
                         email: {
                             type: "string",
                         },
-                        number: {
+                        phone: {
                             type: "string",
                         },
                         gender: {
@@ -32,10 +32,10 @@ exports.options = {
                     },
                     example: {
                         id: 13,
-                        first_name: "Lahiru",
-                        last_name: "Amaratunga",
+                        firstName: "Lahiru",
+                        lastName: "Amaratunga",
                         email: "lahirua@swivelgroup.com.au",
-                        number: "+94712130466",
+                        phone: "+94712130466",
                         gender: "M",
                         photo: "https://randomuser.me/api/portraits/men/30.jpg",
                     },

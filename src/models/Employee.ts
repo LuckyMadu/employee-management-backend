@@ -1,26 +1,26 @@
 import { Schema, model } from "mongoose";
 
 interface IEmployee {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email?: string;
-  number?: string;
+  phone?: string;
   gender?: string;
   photo?: string;
 }
 
 const employeeSchema = new Schema<IEmployee>(
   {
-    first_name: {
+    firstName: {
       type: String,
     },
-    last_name: {
+    lastName: {
       type: String,
     },
     email: {
       type: String,
     },
-    number: {
+    phone: {
       type: String,
     },
     gender: {

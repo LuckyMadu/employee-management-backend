@@ -9,16 +9,16 @@ export const addEmployeeValidation = (
   next: Express.NextFunction
 ) => {
   const schema = Joi.object({
-    first_name: Joi.string().required().messages({
+    firstName: Joi.string().required().messages({
       "any.required": "First name is required",
     }),
-    last_name: Joi.string().required().messages({
+    lastName: Joi.string().required().messages({
       "any.required": "Last name is required",
     }),
     email: Joi.string().required().messages({
       "any.required": "Email is required",
     }),
-    number: Joi.string().required().messages({
+    phone: Joi.string().required().messages({
       "any.required": "Phone Number is required",
     }),
     gender: Joi.string().required().messages({

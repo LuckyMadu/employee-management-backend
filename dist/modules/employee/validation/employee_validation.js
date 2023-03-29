@@ -29,16 +29,16 @@ var commonResponseType = __importStar(require("../../../static/static.json"));
 var response_1 = require("../../../utils/response");
 var addEmployeeValidation = function (req, res, next) {
     var schema = Joi.object({
-        first_name: Joi.string().required().messages({
+        firstName: Joi.string().required().messages({
             "any.required": "First name is required",
         }),
-        last_name: Joi.string().required().messages({
+        lastName: Joi.string().required().messages({
             "any.required": "Last name is required",
         }),
         email: Joi.string().required().messages({
             "any.required": "Email is required",
         }),
-        number: Joi.string().required().messages({
+        phone: Joi.string().required().messages({
             "any.required": "Phone Number is required",
         }),
         gender: Joi.string().required().messages({
