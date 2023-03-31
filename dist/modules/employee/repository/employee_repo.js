@@ -50,8 +50,12 @@ var getSingleEmployeeRepo = function (empId) { return __awaiter(void 0, void 0, 
     });
 }); };
 var searchEmployeeRepo = function (query) { return __awaiter(void 0, void 0, void 0, function () {
+    var regex;
     return __generator(this, function (_a) {
-        return [2 /*return*/, Employee_1.Employee.find({ $text: { $search: query } })];
+        regex = new RegExp(query, "i");
+        return [2 /*return*/, Employee_1.Employee.find({
+                $or: [{ firstName: regex }, { lastName: regex }, { email: regex }],
+            })];
     });
 }); };
 var addEmployeeRepo = function (requestBody) { return __awaiter(void 0, void 0, void 0, function () {

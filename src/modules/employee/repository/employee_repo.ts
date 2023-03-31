@@ -12,7 +12,10 @@ const getSingleEmployeeRepo = async (empId: string) => {
 };
 
 const searchEmployeeRepo = async (query: string) => {
-  return Employee.find({ $text: { $search: query } });
+  const regex = new RegExp(query, "i");
+  return Employee.find({
+    $or: [{ firstName: regex }, { lastName: regex }, { email: regex }],
+  });
 };
 
 const addEmployeeRepo = async (requestBody: EmployeeDTO) => {
