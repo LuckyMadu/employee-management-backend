@@ -49,6 +49,11 @@ var getSingleEmployeeRepo = function (empId) { return __awaiter(void 0, void 0, 
             })];
     });
 }); };
+var searchEmployeeRepo = function (query) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        return [2 /*return*/, Employee_1.Employee.find({ $text: { $search: query } })];
+    });
+}); };
 var addEmployeeRepo = function (requestBody) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/, Employee_1.Employee.create(requestBody)];
@@ -69,6 +74,7 @@ var deleteEmployeeRepo = function (empId) { return __awaiter(void 0, void 0, voi
 exports.default = {
     getAllEmployeeRepo: getAllEmployeeRepo,
     getSingleEmployeeRepo: getSingleEmployeeRepo,
+    searchEmployeeRepo: searchEmployeeRepo,
     addEmployeeRepo: addEmployeeRepo,
     updateEmployeeRepo: updateEmployeeRepo,
     deleteEmployeeRepo: deleteEmployeeRepo,

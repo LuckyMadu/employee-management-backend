@@ -9,6 +9,10 @@ const getAllEmployeeService = () => EmployeeRepo.getAllEmployeeRepo();
 const getSingleEmployeeService = (empId: string) =>
   EmployeeRepo.getSingleEmployeeRepo(empId);
 
+// search employee
+const searchEmployeeService = (query: string) =>
+  EmployeeRepo.searchEmployeeRepo(query);
+
 // add employee
 const addEmployeeService = (requestBody: EmployeeDTO) =>
   EmployeeRepo.addEmployeeRepo(requestBody);
@@ -24,6 +28,7 @@ const deleteEmployeeService = (empId: string) =>
 export default {
   getAllEmployeeService,
   getSingleEmployeeService,
+  searchEmployeeService,
   addEmployeeService,
   updateEmployeeService,
   deleteEmployeeService,

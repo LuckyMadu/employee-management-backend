@@ -11,6 +11,10 @@ const getSingleEmployeeRepo = async (empId: string) => {
   });
 };
 
+const searchEmployeeRepo = async (query: string) => {
+  return Employee.find({ $text: { $search: query } });
+};
+
 const addEmployeeRepo = async (requestBody: EmployeeDTO) => {
   return Employee.create(requestBody);
 };
@@ -32,6 +36,7 @@ const deleteEmployeeRepo = async (empId: string) => {
 export default {
   getAllEmployeeRepo,
   getSingleEmployeeRepo,
+  searchEmployeeRepo,
   addEmployeeRepo,
   updateEmployeeRepo,
   deleteEmployeeRepo,

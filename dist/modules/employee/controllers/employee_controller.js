@@ -186,10 +186,39 @@ var deleteEmployeeController = function (req, res) { return __awaiter(void 0, vo
         }
     });
 }); };
+var searchEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var query, data, response, err_6;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                query = req.query.query;
+                if (typeof query !== "string") {
+                    return [2 /*return*/, res
+                            .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+                            .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR)];
+                }
+                return [4 /*yield*/, employee_service_1.default.searchEmployeeService(query)];
+            case 1:
+                data = _a.sent();
+                response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, { data: data }, commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_SEARCH_SUCCESS, {});
+                res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
+                return [3 /*break*/, 3];
+            case 2:
+                err_6 = _a.sent();
+                res
+                    .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+                    .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
 exports.default = {
     getAllEmployeeController: getAllEmployeeController,
     getSingleEmployeeController: getSingleEmployeeController,
     addEmployeeController: addEmployeeController,
     updateEmployeeController: updateEmployeeController,
     deleteEmployeeController: deleteEmployeeController,
+    searchEmployeeController: searchEmployeeController,
 };

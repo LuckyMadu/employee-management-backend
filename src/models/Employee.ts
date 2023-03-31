@@ -35,5 +35,7 @@ const employeeSchema = new Schema<IEmployee>(
   }
 );
 
+employeeSchema.index({ firstName: "text", lastName: "text", email: "text" });
+
 const Employee = model<IEmployee>("employees", employeeSchema);
 export { Employee };

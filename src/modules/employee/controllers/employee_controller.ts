@@ -130,10 +130,40 @@ const deleteEmployeeController = async (
   }
 };
 
+const searchEmployeeController = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  try {
+    const { query } = req.query;
+
+    if (typeof query !== "string") {
+      return res
+        .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+        .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+    }
+
+    const data = await EmployeeService.searchEmployeeService(query);
+
+    const response = commonResponse(
+      commonResponseType.RESPONSE_SUCCESS.TRUE,
+      { data },
+      commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_SEARCH_SUCCESS,
+      {}
+    );
+    res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
+  } catch (err) {
+    res
+      .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+      .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+  }
+};
+
 export default {
   getAllEmployeeController,
   getSingleEmployeeController,
   addEmployeeController,
   updateEmployeeController,
   deleteEmployeeController,
+  searchEmployeeController,
 };

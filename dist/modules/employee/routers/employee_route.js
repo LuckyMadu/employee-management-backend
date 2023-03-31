@@ -31,6 +31,18 @@ router.get("/list", employee_controller_1.default.getAllEmployeeController);
  * @swagger
  * tags:
  *   name: Employee
+ *   description:  Search employees
+ * /employee/search:
+ *   get:
+ *     summary: Search employees
+ *     tags: [Employee]
+ *
+ */
+router.get("/search", employee_controller_1.default.searchEmployeeController);
+/**
+ * @swagger
+ * tags:
+ *   name: Employee
  *   description: Get single employee
  * /employee/{empId}:
  *   delete:

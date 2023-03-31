@@ -7,6 +7,7 @@ var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var path_1 = __importDefault(require("path"));
+var body_parser_1 = __importDefault(require("body-parser"));
 var swaggerJsDoc = require("swagger-jsdoc");
 var swaggerUI = require("swagger-ui-express");
 var db_1 = __importDefault(require("./config/db"));
@@ -27,6 +28,7 @@ dotenv_1.default.config();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+app.use(body_parser_1.default.json());
 // health check route
 app.use("/", healthcheck_route_1.healthcheckRouter);
 // employee route

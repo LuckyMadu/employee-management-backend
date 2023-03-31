@@ -10,6 +10,10 @@ var getAllEmployeeService = function () { return employee_repo_1.default.getAllE
 var getSingleEmployeeService = function (empId) {
     return employee_repo_1.default.getSingleEmployeeRepo(empId);
 };
+// search employee
+var searchEmployeeService = function (query) {
+    return employee_repo_1.default.searchEmployeeRepo(query);
+};
 // add employee
 var addEmployeeService = function (requestBody) {
     return employee_repo_1.default.addEmployeeRepo(requestBody);
@@ -25,6 +29,7 @@ var deleteEmployeeService = function (empId) {
 exports.default = {
     getAllEmployeeService: getAllEmployeeService,
     getSingleEmployeeService: getSingleEmployeeService,
+    searchEmployeeService: searchEmployeeService,
     addEmployeeService: addEmployeeService,
     updateEmployeeService: updateEmployeeService,
     deleteEmployeeService: deleteEmployeeService,

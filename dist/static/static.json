@@ -15,7 +15,8 @@
         "SINGLE_EMPLOYEE_FETCH_SUCCESS": "Single Employee fetched successfully",
         "EMPLOYEE_REGISTER_SUCCESS": "Employee registered successfully",
         "EMPLOYEE_UPDATE_SUCCESS": "Employee updated successfully",
-        "EMPLOYEE_REMOVE_SUCCESS": "User deleted successfully",
+        "EMPLOYEE_REMOVE_SUCCESS": "Employee deleted successfully",
+        "EMPLOYEE_SEARCH_SUCCESS": "Employee searched successfully",
         "VALIDATION_ERROR": "Validation Error"
     },
     "LOGGER": {

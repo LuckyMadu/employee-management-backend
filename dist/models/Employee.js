@@ -24,5 +24,6 @@ var employeeSchema = new mongoose_1.Schema({
 }, {
     timestamps: true,
 });
+employeeSchema.index({ firstName: "text", lastName: "text", email: "text" });
 var Employee = (0, mongoose_1.model)("employees", employeeSchema);
 exports.Employee = Employee;
