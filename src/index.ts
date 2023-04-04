@@ -57,3 +57,5 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 app.listen(process.env.PORT || PORT, () =>
   console.log(`Backend server is running on port ${PORT}`)
 );
+
+module.exports = app;

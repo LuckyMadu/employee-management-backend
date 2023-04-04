@@ -1,5 +1,4 @@
-import Express from "express";
-import { EmployeeDTO } from "../../../DTO/Employee.dto";
+import { EmployeeDTO } from "../types/Employee.dto";
 import EmployeeRepo from "../repository/employee_repo";
 
 // fetch all employees

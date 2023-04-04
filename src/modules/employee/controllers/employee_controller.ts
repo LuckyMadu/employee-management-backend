@@ -3,7 +3,7 @@ import Express from "express";
 import { commonResponse } from "../../../utils/response";
 import * as commonResponseType from "../../../static/static.json";
 import EmployeeService from "../services/employee_service";
-import { EmployeeDTO } from "../../../DTO/Employee.dto";
+import { EmployeeDTO } from "../types/Employee.dto";
 
 const getAllEmployeeController = async (
   req: Express.Request,

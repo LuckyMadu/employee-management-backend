@@ -1,4 +1,4 @@
-import { EmployeeDTO } from "../../../DTO/Employee.dto";
+import { EmployeeDTO } from "../types/Employee.dto";
 import { Employee } from "../../../models/Employee";
 
 const getAllEmployeeRepo = async () => {

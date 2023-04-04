@@ -48,3 +48,4 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 app.listen(process.env.PORT || PORT, function () {
     return console.log("Backend server is running on port ".concat(PORT));
 });
+module.exports = app;
