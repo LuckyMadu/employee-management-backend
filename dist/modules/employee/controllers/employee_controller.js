@@ -65,6 +65,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var response_1 = require("../../../utils/response");
 var commonResponseType = __importStar(require("../../../static/static.json"));
 var employee_service_1 = __importDefault(require("../services/employee_service"));
+/**
+ * get employee lists
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return employee lists
+ */
 var getAllEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var data, response, err_1;
     return __generator(this, function (_a) {
@@ -88,17 +95,30 @@ var getAllEmployeeController = function (req, res) { return __awaiter(void 0, vo
         }
     });
 }); };
+/**
+ * get single employee detail by given id
+ * if there is no record for given id return status code 404
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return success or failure response
+ */
 var getSingleEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var empId, data, response, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                empId = req.params.empId;
                 console.info("Single Employee endpoint...");
+                empId = req.params.empId;
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
             case 1:
                 data = _a.sent();
+                if (!data) {
+                    return [2 /*return*/, res
+                            .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+                            .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND)];
+                }
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, { data: data }, commonResponseType.RESPONSE_MESSAGES.SINGLE_EMPLOYEE_FETCH_SUCCESS, {});
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
                 return [3 /*break*/, 3];
@@ -112,6 +132,13 @@ var getSingleEmployeeController = function (req, res) { return __awaiter(void 0,
         }
     });
 }); };
+/**
+ * create an employee using given data
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return the response is success or failure
+ */
 var addEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var requestBody, data, response, err_3, response;
     return __generator(this, function (_a) {
@@ -123,11 +150,10 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
             case 1:
                 data = _a.sent();
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, data, commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_REGISTER_SUCCESS, {});
-                res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
+                res.status(commonResponseType.HTTP_RESPONSE.HTTP_CREATED).json(response);
                 return [3 /*break*/, 3];
             case 2:
                 err_3 = _a.sent();
-                console.log(err_3);
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.FALSE, {}, commonResponseType.RESPONSE_MESSAGES.VALIDATION_ERROR, {
                     message: err_3.message,
                 });
@@ -139,50 +165,83 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
         }
     });
 }); };
+/**
+ * update employee detail using given id and data
+ * before update the record we checked id exists or not in the db
+ * if id is exists user can update the record
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return success or failure response
+ */
 var updateEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var empId, requestBody, data, response, err_4;
+    var empId, requestBody, singleEmployee, data, response, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
+                _a.trys.push([0, 3, , 4]);
                 empId = req.params.empId;
                 requestBody = req.body;
-                return [4 /*yield*/, employee_service_1.default.updateEmployeeService(empId, requestBody)];
+                return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
             case 1:
+                singleEmployee = _a.sent();
+                return [4 /*yield*/, employee_service_1.default.updateEmployeeService(empId, requestBody)];
+            case 2:
                 data = _a.sent();
+                if (!singleEmployee) {
+                    return [2 /*return*/, res
+                            .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+                            .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND)];
+                }
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, { data: data }, commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_UPDATE_SUCCESS, {});
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 err_4 = _a.sent();
+                console.log(err_4);
                 res
                     .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                     .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
+/**
+ * delete the single employee using given id
+ * before delete the record we check id exists or not
+ * if id is exists user can delete the record
+ * @return {object} is for return success or failure response
+ */
 var deleteEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var empId, data, response, err_5;
+    var empId, data, singleEmployee, response, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
+                _a.trys.push([0, 3, , 4]);
                 empId = req.params.empId;
+                console.log("empId", empId);
                 return [4 /*yield*/, employee_service_1.default.deleteEmployeeService(empId)];
             case 1:
                 data = _a.sent();
+                return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
+            case 2:
+                singleEmployee = _a.sent();
+                if (!singleEmployee) {
+                    return [2 /*return*/, res
+                            .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+                            .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND)];
+                }
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, { data: data }, commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_REMOVE_SUCCESS, {});
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 err_5 = _a.sent();
                 res
                     .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                     .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); };

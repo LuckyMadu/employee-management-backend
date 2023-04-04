@@ -6,11 +6,11 @@ export const employeeCreationData = {
   gender: "M",
 };
 
-export const employeeCreationWithOutValues = {
-  first_name: "",
-  last_name: "",
+export const employeeCreationNullValues = {
+  firstName: "",
+  lastName: "",
   email: "",
-  number: "",
+  phone: "",
   gender: "",
 };
 

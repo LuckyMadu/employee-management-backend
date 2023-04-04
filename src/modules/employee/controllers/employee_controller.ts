@@ -5,6 +5,13 @@ import * as commonResponseType from "../../../static/static.json";
 import EmployeeService from "../services/employee_service";
 import { EmployeeDTO } from "../types/Employee.dto";
 
+/**
+ * get employee lists
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return employee lists
+ */
 const getAllEmployeeController = async (
   req: Express.Request,
   res: Express.Response
@@ -27,16 +34,30 @@ const getAllEmployeeController = async (
   }
 };
 
+/**
+ * get single employee detail by given id
+ * if there is no record for given id return status code 404
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return success or failure response
+ */
 const getSingleEmployeeController = async (
   req: Express.Request,
   res: Express.Response
 ) => {
   try {
+    console.info("Single Employee endpoint...");
     const { empId } = req.params;
 
-    console.info("Single Employee endpoint...");
-
     const data = await EmployeeService.getSingleEmployeeService(empId);
+
+    if (!data) {
+      return res
+        .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+        .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND);
+    }
+
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,
       { data },
@@ -51,6 +72,13 @@ const getSingleEmployeeController = async (
   }
 };
 
+/**
+ * create an employee using given data
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return the response is success or failure
+ */
 const addEmployeeController = async (
   req: Express.Request,
   res: Express.Response
@@ -65,9 +93,8 @@ const addEmployeeController = async (
       commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_REGISTER_SUCCESS,
       {}
     );
-    res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
+    res.status(commonResponseType.HTTP_RESPONSE.HTTP_CREATED).json(response);
   } catch (err: any) {
-    console.log(err);
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.FALSE,
       {},
@@ -82,6 +109,16 @@ const addEmployeeController = async (
   }
 };
 
+/**
+ * update employee detail using given id and data
+ * before update the record we checked id exists or not in the db
+ * if id is exists user can update the record
+ * @param req
+ * @param res
+ * @param next
+ * @return {object} is for return success or failure response
+ */
+
 const updateEmployeeController = async (
   req: Express.Request,
   res: Express.Response
@@ -89,10 +126,21 @@ const updateEmployeeController = async (
   try {
     const { empId } = req.params;
     const requestBody = req.body;
+
+    const singleEmployee = await EmployeeService.getSingleEmployeeService(
+      empId
+    );
+
     const data = await EmployeeService.updateEmployeeService(
       empId,
       requestBody
     );
+
+    if (!singleEmployee) {
+      return res
+        .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+        .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND);
+    }
 
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,
@@ -102,19 +150,36 @@ const updateEmployeeController = async (
     );
     res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
   } catch (err) {
+    console.log(err);
     res
       .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
       .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
   }
 };
 
+/**
+ * delete the single employee using given id
+ * before delete the record we check id exists or not
+ * if id is exists user can delete the record
+ * @return {object} is for return success or failure response
+ */
 const deleteEmployeeController = async (
   req: Express.Request,
   res: Express.Response
 ) => {
   try {
     const { empId } = req.params;
+    console.log("empId", empId);
     const data = await EmployeeService.deleteEmployeeService(empId);
+    const singleEmployee = await EmployeeService.getSingleEmployeeService(
+      empId
+    );
+
+    if (!singleEmployee) {
+      return res
+        .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+        .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND);
+    }
 
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,

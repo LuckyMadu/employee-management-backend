@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.employeeUpdateData = exports.employeeCreationWithOutValues = exports.employeeCreationData = void 0;
+exports.employeeUpdateData = exports.employeeCreationNullValues = exports.employeeCreationData = void 0;
 exports.employeeCreationData = {
     firstName: "Lahiru",
     lastName: "Amaratunga",
@@ -8,11 +8,11 @@ exports.employeeCreationData = {
     phone: "+94712130477",
     gender: "M",
 };
-exports.employeeCreationWithOutValues = {
-    first_name: "",
-    last_name: "",
+exports.employeeCreationNullValues = {
+    firstName: "",
+    lastName: "",
     email: "",
-    number: "",
+    phone: "",
     gender: "",
 };
 exports.employeeUpdateData = {
