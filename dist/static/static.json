@@ -20,10 +20,6 @@
         "EMPLOYEE_SEARCH_SUCCESS": "Employee searched successfully",
         "VALIDATION_ERROR": "Validation Error"
     },
-    "LOGGER": {
-        "INFO": "info",
-        "ERROR": "error"
-    },
     "RESPONSE_SUCCESS": {
         "TRUE": true,
         "FALSE": false

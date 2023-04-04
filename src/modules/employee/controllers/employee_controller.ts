@@ -9,7 +9,6 @@ import { EmployeeDTO } from "../types/Employee.dto";
  * get employee lists
  * @param req
  * @param res
- * @param next
  * @return {object} is for return employee lists
  */
 const getAllEmployeeController = async (
@@ -39,8 +38,7 @@ const getAllEmployeeController = async (
  * if there is no record for given id return status code 404
  * @param req
  * @param res
- * @param next
- * @return {object} is for return success or failure response
+ * @return {object} is for return particular employee detail
  */
 const getSingleEmployeeController = async (
   req: Express.Request,
@@ -76,7 +74,6 @@ const getSingleEmployeeController = async (
  * create an employee using given data
  * @param req
  * @param res
- * @param next
  * @return {object} is for return the response is success or failure
  */
 const addEmployeeController = async (
@@ -115,7 +112,6 @@ const addEmployeeController = async (
  * if id is exists user can update the record
  * @param req
  * @param res
- * @param next
  * @return {object} is for return success or failure response
  */
 
@@ -161,6 +157,8 @@ const updateEmployeeController = async (
  * delete the single employee using given id
  * before delete the record we check id exists or not
  * if id is exists user can delete the record
+ * @param req
+ * @param res
  * @return {object} is for return success or failure response
  */
 const deleteEmployeeController = async (
@@ -195,6 +193,12 @@ const deleteEmployeeController = async (
   }
 };
 
+/**
+ * search employee using firstname, lastname and email
+ * @param req
+ * @param res
+ * @return {object} is for return the search results
+ */
 const searchEmployeeController = async (
   req: Express.Request,
   res: Express.Response

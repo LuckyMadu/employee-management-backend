@@ -69,7 +69,6 @@ var employee_service_1 = __importDefault(require("../services/employee_service")
  * get employee lists
  * @param req
  * @param res
- * @param next
  * @return {object} is for return employee lists
  */
 var getAllEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -100,8 +99,7 @@ var getAllEmployeeController = function (req, res) { return __awaiter(void 0, vo
  * if there is no record for given id return status code 404
  * @param req
  * @param res
- * @param next
- * @return {object} is for return success or failure response
+ * @return {object} is for return particular employee detail
  */
 var getSingleEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var empId, data, response, err_2;
@@ -136,7 +134,6 @@ var getSingleEmployeeController = function (req, res) { return __awaiter(void 0,
  * create an employee using given data
  * @param req
  * @param res
- * @param next
  * @return {object} is for return the response is success or failure
  */
 var addEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -171,7 +168,6 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
  * if id is exists user can update the record
  * @param req
  * @param res
- * @param next
  * @return {object} is for return success or failure response
  */
 var updateEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -211,6 +207,8 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
  * delete the single employee using given id
  * before delete the record we check id exists or not
  * if id is exists user can delete the record
+ * @param req
+ * @param res
  * @return {object} is for return success or failure response
  */
 var deleteEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -245,6 +243,12 @@ var deleteEmployeeController = function (req, res) { return __awaiter(void 0, vo
         }
     });
 }); };
+/**
+ * search employee using firstname, lastname and email
+ * @param req
+ * @param res
+ * @return {object} is for return the search results
+ */
 var searchEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var query, data, response, err_6;
     return __generator(this, function (_a) {
