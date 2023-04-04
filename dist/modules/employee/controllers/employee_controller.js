@@ -171,7 +171,7 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
  * @return {object} is for return success or failure response
  */
 var updateEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var empId, requestBody, singleEmployee, data, response, err_4;
+    var empId, requestBody, employee, data, response, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -180,11 +180,11 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
                 requestBody = req.body;
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
             case 1:
-                singleEmployee = _a.sent();
+                employee = _a.sent();
                 return [4 /*yield*/, employee_service_1.default.updateEmployeeService(empId, requestBody)];
             case 2:
                 data = _a.sent();
-                if (!singleEmployee) {
+                if (!employee) {
                     return [2 /*return*/, res
                             .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                             .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND)];
@@ -212,20 +212,19 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
  * @return {object} is for return success or failure response
  */
 var deleteEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var empId, data, singleEmployee, response, err_5;
+    var empId, data, employee, response, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
                 empId = req.params.empId;
-                console.log("empId", empId);
                 return [4 /*yield*/, employee_service_1.default.deleteEmployeeService(empId)];
             case 1:
                 data = _a.sent();
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
             case 2:
-                singleEmployee = _a.sent();
-                if (!singleEmployee) {
+                employee = _a.sent();
+                if (!employee) {
                     return [2 /*return*/, res
                             .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                             .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND)];

@@ -123,16 +123,14 @@ const updateEmployeeController = async (
     const { empId } = req.params;
     const requestBody = req.body;
 
-    const singleEmployee = await EmployeeService.getSingleEmployeeService(
-      empId
-    );
+    const employee = await EmployeeService.getSingleEmployeeService(empId);
 
     const data = await EmployeeService.updateEmployeeService(
       empId,
       requestBody
     );
 
-    if (!singleEmployee) {
+    if (!employee) {
       return res
         .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
         .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND);
@@ -167,13 +165,11 @@ const deleteEmployeeController = async (
 ) => {
   try {
     const { empId } = req.params;
-    console.log("empId", empId);
-    const data = await EmployeeService.deleteEmployeeService(empId);
-    const singleEmployee = await EmployeeService.getSingleEmployeeService(
-      empId
-    );
 
-    if (!singleEmployee) {
+    const data = await EmployeeService.deleteEmployeeService(empId);
+    const employee = await EmployeeService.getSingleEmployeeService(empId);
+
+    if (!employee) {
       return res
         .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
         .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND);
