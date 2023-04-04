@@ -9,10 +9,10 @@ const swaggerUI = require("swagger-ui-express");
 
 import connectDB from "./config/db";
 
-import { employeeRouter } from "./modules/employee/routers/employee_route";
-import { healthcheckRouter } from "./modules/healthcheck/routers/healthcheck_route";
-import { options as swaggerDocument } from "./utils/swaggerOptions";
-import { errorHandler } from "./utils/errorHandler";
+import { employeeRouter } from "@/modules/employee/routers/employee_route";
+import { healthcheckRouter } from "@/modules/healthcheck/routers/healthcheck_route";
+import { options as swaggerDocument } from "@/utils/swaggerOptions";
+import { errorHandler } from "@/utils/errorHandler";
 
 //defined port
 const PORT = 3000;

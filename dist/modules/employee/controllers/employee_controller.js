@@ -62,9 +62,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var response_1 = require("../../../utils/response");
-var commonResponseType = __importStar(require("../../../static/static.json"));
-var employee_service_1 = __importDefault(require("../services/employee_service"));
+var employee_service_1 = __importDefault(require("@/modules/employee/services/employee_service"));
+var response_1 = require("@/utils/response");
+var commonResponseType = __importStar(require("@/static/static.json"));
 /**
  * get employee lists
  * @param req
@@ -142,6 +142,7 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
+                console.info("Employee creation endpoint...");
                 requestBody = req.body;
                 return [4 /*yield*/, employee_service_1.default.addEmployeeService(requestBody)];
             case 1:
@@ -176,6 +177,7 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
+                console.info("Employee update endpoint...");
                 empId = req.params.empId;
                 requestBody = req.body;
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
@@ -217,6 +219,7 @@ var deleteEmployeeController = function (req, res) { return __awaiter(void 0, vo
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
+                console.info("Employee delete endpoint...");
                 empId = req.params.empId;
                 return [4 /*yield*/, employee_service_1.default.deleteEmployeeService(empId)];
             case 1:
@@ -254,6 +257,7 @@ var searchEmployeeController = function (req, res) { return __awaiter(void 0, vo
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
+                console.info("Employee search endpoint...");
                 query = req.query.query;
                 if (typeof query !== "string") {
                     return [2 /*return*/, res

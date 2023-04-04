@@ -1,7 +1,8 @@
 import Express from "express";
 const Joi = require("joi");
-import * as commonResponseType from "../../../static/static.json";
-import { commonResponse } from "../../../utils/response";
+
+import * as commonResponseType from "@/static/static.json";
+import { commonResponse } from "@/utils/response";
 
 export const addEmployeeValidation = (
   req: Express.Request,

@@ -1,5 +1,5 @@
-import { commonResponse } from "./response";
-import commonResponseType from "../static/static.json";
+import { commonResponse } from "@/utils/response";
+import commonResponseType from "@/static/static.json";
 
 import type { ErrorRequestHandler } from "express";
 

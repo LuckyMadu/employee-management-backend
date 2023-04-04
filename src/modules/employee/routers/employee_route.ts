@@ -1,6 +1,7 @@
 import express from "express";
-import EmployeeController from "../controllers/employee_controller";
-import { addEmployeeValidation } from "../validation/employee_validation";
+
+import EmployeeController from "@/modules/employee/controllers/employee_controller";
+import { addEmployeeValidation } from "@/modules/employee/validation/employee_validation";
 
 const router = express.Router();
 

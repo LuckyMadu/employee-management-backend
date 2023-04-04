@@ -1,5 +1,5 @@
-import { EmployeeDTO } from "../types/Employee.dto";
-import { Employee } from "../../../models/Employee";
+import { Employee } from "@/models/Employee";
+import { EmployeeDTO } from "@/modules/employee/types/Employee.dto";
 
 const getAllEmployeeRepo = async () => {
   return Employee.find({});

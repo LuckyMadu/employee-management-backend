@@ -1,5 +1,5 @@
-import { EmployeeDTO } from "../types/Employee.dto";
-import EmployeeRepo from "../repository/employee_repo";
+import EmployeeRepo from "@/modules/employee/repository/employee_repo";
+import { EmployeeDTO } from "@/modules/employee/types/Employee.dto";
 
 // fetch all employees
 const getAllEmployeeService = () => EmployeeRepo.getAllEmployeeRepo();

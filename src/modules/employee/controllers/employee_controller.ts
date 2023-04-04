@@ -1,9 +1,10 @@
 import Express from "express";
 
-import { commonResponse } from "../../../utils/response";
-import * as commonResponseType from "../../../static/static.json";
-import EmployeeService from "../services/employee_service";
-import { EmployeeDTO } from "../types/Employee.dto";
+import EmployeeService from "@/modules/employee/services/employee_service";
+import { EmployeeDTO } from "@/modules/employee/types/Employee.dto";
+
+import { commonResponse } from "@/utils/response";
+import * as commonResponseType from "@/static/static.json";
 
 /**
  * get employee lists
@@ -81,7 +82,10 @@ const addEmployeeController = async (
   res: Express.Response
 ) => {
   try {
+    console.info("Employee creation endpoint...");
+
     const requestBody: EmployeeDTO = req.body;
+
     const data = await EmployeeService.addEmployeeService(requestBody);
 
     const response = commonResponse(
@@ -120,6 +124,8 @@ const updateEmployeeController = async (
   res: Express.Response
 ) => {
   try {
+    console.info("Employee update endpoint...");
+
     const { empId } = req.params;
     const requestBody = req.body;
 
@@ -164,6 +170,8 @@ const deleteEmployeeController = async (
   res: Express.Response
 ) => {
   try {
+    console.info("Employee delete endpoint...");
+
     const { empId } = req.params;
 
     const data = await EmployeeService.deleteEmployeeService(empId);
@@ -200,6 +208,8 @@ const searchEmployeeController = async (
   res: Express.Response
 ) => {
   try {
+    console.info("Employee search endpoint...");
+
     const { query } = req.query;
 
     if (typeof query !== "string") {
