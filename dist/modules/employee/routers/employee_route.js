@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.employeeRouter = void 0;
 var express_1 = __importDefault(require("express"));
-var employee_controller_1 = __importDefault(require("@/modules/employee/controllers/employee_controller"));
-var employee_validation_1 = require("@/modules/employee/validation/employee_validation");
+var employee_controller_1 = __importDefault(require("../../../modules/employee/controllers/employee_controller"));
+var employee_validation_1 = require("../../../modules/employee/validation/employee_validation");
 var router = express_1.default.Router();
 /**
  * @swagger

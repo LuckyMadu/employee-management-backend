@@ -11,10 +11,10 @@ var body_parser_1 = __importDefault(require("body-parser"));
 var swaggerJsDoc = require("swagger-jsdoc");
 var swaggerUI = require("swagger-ui-express");
 var db_1 = __importDefault(require("./config/db"));
-var employee_route_1 = require("@/modules/employee/routers/employee_route");
-var healthcheck_route_1 = require("@/modules/healthcheck/routers/healthcheck_route");
-var swaggerOptions_1 = require("@/utils/swaggerOptions");
-var errorHandler_1 = require("@/utils/errorHandler");
+var employee_route_1 = require("./modules/employee/routers/employee_route");
+var healthcheck_route_1 = require("./modules/healthcheck/routers/healthcheck_route");
+var swaggerOptions_1 = require("./utils/swaggerOptions");
+var errorHandler_1 = require("./utils/errorHandler");
 //defined port
 var PORT = 3000;
 var app = (0, express_1.default)();

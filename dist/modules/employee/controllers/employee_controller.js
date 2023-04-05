@@ -62,9 +62,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var employee_service_1 = __importDefault(require("@/modules/employee/services/employee_service"));
-var response_1 = require("@/utils/response");
-var commonResponseType = __importStar(require("@/static/static.json"));
+var employee_service_1 = __importDefault(require("../../../modules/employee/services/employee_service"));
+var response_1 = require("../../../utils/response");
+var commonResponseType = __importStar(require("../../../static/static.json"));
 /**
  * get employee lists
  * @param req

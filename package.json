@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx nodemon",
     "test": "jest --coverage",
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc && tsc-alias",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist"
   },

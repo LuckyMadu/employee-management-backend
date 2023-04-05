@@ -25,8 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addEmployeeValidation = void 0;
 var Joi = require("joi");
-var commonResponseType = __importStar(require("@/static/static.json"));
-var response_1 = require("@/utils/response");
+var commonResponseType = __importStar(require("../../../static/static.json"));
+var response_1 = require("../../../utils/response");
 var addEmployeeValidation = function (req, res, next) {
     var schema = Joi.object({
         firstName: Joi.string()
