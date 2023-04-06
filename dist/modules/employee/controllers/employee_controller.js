@@ -183,14 +183,14 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
             case 1:
                 employee = _a.sent();
-                return [4 /*yield*/, employee_service_1.default.updateEmployeeService(empId, requestBody)];
-            case 2:
-                data = _a.sent();
                 if (!employee) {
                     return [2 /*return*/, res
                             .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                             .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND)];
                 }
+                return [4 /*yield*/, employee_service_1.default.updateEmployeeService(empId, requestBody)];
+            case 2:
+                data = _a.sent();
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, { data: data }, commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_UPDATE_SUCCESS, {});
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
                 return [3 /*break*/, 4];
@@ -214,24 +214,24 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
  * @return {object} is for return success or failure response
  */
 var deleteEmployeeController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var empId, data, employee, response, err_5;
+    var empId, employee, data, response, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
                 console.info("Employee delete endpoint...");
                 empId = req.params.empId;
-                return [4 /*yield*/, employee_service_1.default.deleteEmployeeService(empId)];
-            case 1:
-                data = _a.sent();
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
-            case 2:
+            case 1:
                 employee = _a.sent();
                 if (!employee) {
                     return [2 /*return*/, res
                             .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
                             .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND)];
                 }
+                return [4 /*yield*/, employee_service_1.default.deleteEmployeeService(empId)];
+            case 2:
+                data = _a.sent();
                 response = (0, response_1.commonResponse)(commonResponseType.RESPONSE_SUCCESS.TRUE, { data: data }, commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_REMOVE_SUCCESS, {});
                 res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
                 return [3 /*break*/, 4];

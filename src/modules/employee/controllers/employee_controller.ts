@@ -131,16 +131,16 @@ const updateEmployeeController = async (
 
     const employee = await EmployeeService.getSingleEmployeeService(empId);
 
-    const data = await EmployeeService.updateEmployeeService(
-      empId,
-      requestBody
-    );
-
     if (!employee) {
       return res
         .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
         .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND);
     }
+
+    const data = await EmployeeService.updateEmployeeService(
+      empId,
+      requestBody
+    );
 
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,
@@ -174,7 +174,6 @@ const deleteEmployeeController = async (
 
     const { empId } = req.params;
 
-    const data = await EmployeeService.deleteEmployeeService(empId);
     const employee = await EmployeeService.getSingleEmployeeService(empId);
 
     if (!employee) {
@@ -182,6 +181,7 @@ const deleteEmployeeController = async (
         .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
         .json(commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_NOT_FOUND);
     }
+    const data = await EmployeeService.deleteEmployeeService(empId);
 
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,
