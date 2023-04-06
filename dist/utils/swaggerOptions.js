@@ -64,7 +64,7 @@ exports.options = {
         ],
     },
     apis: [
-        "".concat(ROOT_FOLDER, "/modules/healthcheck/routers/healthcheck_route.ts"),
-        "".concat(ROOT_FOLDER, "/modules/employee/routers/employee_route.ts"),
+        "".concat(ROOT_FOLDER, "/modules/healthcheck/routers/healthcheck_route.js"),
+        "".concat(ROOT_FOLDER, "/modules/employee/routers/employee_route.js"),
     ],
 };
