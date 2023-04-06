@@ -60,8 +60,11 @@ export const options = {
       },
     ],
   },
+  // Temp fix for run swagger paths on vercel
   apis: [
     `${ROOT_FOLDER}/modules/healthcheck/routers/healthcheck_route.js`,
+    `${ROOT_FOLDER}/modules/healthcheck/routers/healthcheck_route.ts`,
     `${ROOT_FOLDER}/modules/employee/routers/employee_route.js`,
+    `${ROOT_FOLDER}/modules/employee/routers/employee_route.ts`,
   ],
 };

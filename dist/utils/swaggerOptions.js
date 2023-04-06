@@ -63,8 +63,11 @@ exports.options = {
             },
         ],
     },
+    // Temp fix for run swagger paths on vercel
     apis: [
         "".concat(ROOT_FOLDER, "/modules/healthcheck/routers/healthcheck_route.js"),
+        "".concat(ROOT_FOLDER, "/modules/healthcheck/routers/healthcheck_route.ts"),
         "".concat(ROOT_FOLDER, "/modules/employee/routers/employee_route.js"),
+        "".concat(ROOT_FOLDER, "/modules/employee/routers/employee_route.ts"),
     ],
 };
