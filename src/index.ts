@@ -18,7 +18,8 @@ import { errorHandler } from "@/utils/errorHandler";
 const PORT = 3000;
 const app = express();
 
-const ROOT_FOLDER = path.join(__dirname, "./");
+const ROOT_FOLDER = path.join(__dirname, "..");
+const SRC_FOLDER = path.join(ROOT_FOLDER, "src");
 
 // configure env variables
 dotenv.config();
@@ -49,7 +50,7 @@ const options = {
   customSiteTitle: "Employee Management API",
 };
 
-app.use("/public", express.static(path.join(ROOT_FOLDER, "public")));
+app.use("/public", express.static(path.join(SRC_FOLDER, "public")));
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 
 // app listener
