@@ -40,7 +40,7 @@ var specs = swaggerJsDoc(swaggerOptions_1.options);
 var options = {
     explorer: true,
     customCssUrl: "/public/swagger-ui.css",
-    customSiteTitle: "Employee Mgt API",
+    customSiteTitle: "Employee Management API",
 };
 app.use("/public", express_1.default.static(path_1.default.join(SRC_FOLDER, "public")));
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
