@@ -18,8 +18,7 @@ var errorHandler_1 = require("./utils/errorHandler");
 //defined port
 var PORT = 3000;
 var app = (0, express_1.default)();
-var ROOT_FOLDER = path_1.default.join(__dirname, "..");
-var SRC_FOLDER = path_1.default.join(ROOT_FOLDER, "src");
+var ROOT_FOLDER = path_1.default.join(__dirname, "./");
 // configure env variables
 dotenv_1.default.config();
 //connect database
@@ -42,7 +41,7 @@ var options = {
     customCssUrl: "/public/swagger-ui.css",
     customSiteTitle: "Employee Management API",
 };
-app.use("/public", express_1.default.static(path_1.default.join(SRC_FOLDER, "public")));
+app.use("/public", express_1.default.static(path_1.default.join(ROOT_FOLDER, "public")));
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 // app listener
 app.listen(process.env.PORT || PORT, function () {
