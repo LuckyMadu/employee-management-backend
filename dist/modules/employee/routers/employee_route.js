@@ -36,6 +36,14 @@ router.get("/list", employee_controller_1.default.getAllEmployeeController);
  *   get:
  *     summary: Search employees
  *     tags: [Employee]
+ *     parameters:
+ *       - in: query
+ *         name: query
+ *         required: true
+ *         schema:
+ *           type: string
+ *           minimum: 1
+ *         description: The search string
  *
  */
 router.get("/search", employee_controller_1.default.searchEmployeeController);
@@ -45,7 +53,7 @@ router.get("/search", employee_controller_1.default.searchEmployeeController);
  *   name: Employee
  *   description: Get single employee
  * /employee/{empId}:
- *   delete:
+ *   get:
  *     summary: Get single employee
  *     tags: [Employee]
  *     parameters:
@@ -53,15 +61,9 @@ router.get("/search", employee_controller_1.default.searchEmployeeController);
  *         name: empId
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *           minimum: 1
  *         description: The Employee ID
- *     requestBody:
- *      required: true
- *      content:
- *        application/json:
- *          schema:
- *            $ref: '#/components/schemas/employee'
  *     responses:
  *       200:
  *         description: Employee fetched successfully!
@@ -111,7 +113,7 @@ router.post("/", employee_validation_1.addEmployeeValidation, employee_controlle
  *         name: empId
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *           minimum: 1
  *         description: The Employee ID
  *     requestBody:
@@ -144,15 +146,9 @@ router.put("/:empId", employee_controller_1.default.updateEmployeeController);
  *         name: empId
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *           minimum: 1
  *         description: The Employee ID
- *     requestBody:
- *      required: true
- *      content:
- *        application/json:
- *          schema:
- *            $ref: '#/components/schemas/employee'
  *     responses:
  *       200:
  *         description: Employee deleted successfully!

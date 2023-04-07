@@ -34,6 +34,14 @@ router.get("/list", EmployeeController.getAllEmployeeController);
  *   get:
  *     summary: Search employees
  *     tags: [Employee]
+ *     parameters:
+ *       - in: query
+ *         name: query
+ *         required: true
+ *         schema:
+ *           type: string
+ *           minimum: 1
+ *         description: The search string
  *
  */
 router.get("/search", EmployeeController.searchEmployeeController);
@@ -44,7 +52,7 @@ router.get("/search", EmployeeController.searchEmployeeController);
  *   name: Employee
  *   description: Get single employee
  * /employee/{empId}:
- *   delete:
+ *   get:
  *     summary: Get single employee
  *     tags: [Employee]
  *     parameters:
@@ -52,15 +60,9 @@ router.get("/search", EmployeeController.searchEmployeeController);
  *         name: empId
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *           minimum: 1
  *         description: The Employee ID
- *     requestBody:
- *      required: true
- *      content:
- *        application/json:
- *          schema:
- *            $ref: '#/components/schemas/employee'
  *     responses:
  *       200:
  *         description: Employee fetched successfully!
@@ -116,7 +118,7 @@ router.post(
  *         name: empId
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *           minimum: 1
  *         description: The Employee ID
  *     requestBody:
@@ -150,15 +152,9 @@ router.put("/:empId", EmployeeController.updateEmployeeController);
  *         name: empId
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *           minimum: 1
  *         description: The Employee ID
- *     requestBody:
- *      required: true
- *      content:
- *        application/json:
- *          schema:
- *            $ref: '#/components/schemas/employee'
  *     responses:
  *       200:
  *         description: Employee deleted successfully!
