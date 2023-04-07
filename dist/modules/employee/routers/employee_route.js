@@ -44,6 +44,13 @@ router.get("/list", employee_controller_1.default.getAllEmployeeController);
  *           type: string
  *           minimum: 1
  *         description: The search string
+ *     responses:
+ *       200:
+ *         description: Employee searched successfully!
+ *       400:
+ *         description: Employee searched failed!
+ *       500:
+ *         description: Some server error!
  *
  */
 router.get("/search", employee_controller_1.default.searchEmployeeController);
