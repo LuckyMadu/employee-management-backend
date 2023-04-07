@@ -1,9 +1,11 @@
-## Welcome to Employee Manager
+![employee_management_diagram drawio](https://user-images.githubusercontent.com/19740478/230542218-da036440-b10d-4548-a194-02a6f9584b94.png)
 
-Employee management is a simple CRUD-based application to manage employees. this application builds up using react js and node js. we can simply add delete,edit search employee.
+Frontend Repository for the solution: https://github.com/LuckyMadu/employee-management-frontend
 
 
 ## Getting Started
+
+Employee management is a simple CRUD-based application to manage employees. this application builds up using react js and node js. we can simply add delete,edit search employee.
 
 1. Clone the repository to your local machine.
 2. Run npm install to install dependencies.
