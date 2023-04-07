@@ -4,7 +4,7 @@
 
 <table>
   <tr>
-    <td>Fronted</td>
+    <td>Frontend</td>
     <td>https://employee-management-portal.vercel.app/</td>
   </tr>
    <tr>
