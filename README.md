@@ -1,9 +1,11 @@
 ![employee_management_diagram drawio](https://user-images.githubusercontent.com/19740478/230542218-da036440-b10d-4548-a194-02a6f9584b94.png)
 
-Frontend Repository for the solution: https://github.com/LuckyMadu/employee-management-frontend
-
-
 ## Getting Started
+
+Frontend : https://employee-management-portal.vercel.app/
+Backend : https://employee-management-backend.vercel.app/
+
+Frontend Repository for the solution: https://github.com/LuckyMadu/employee-management-frontend
 
 Employee management is a simple CRUD-based application to manage employees. this application builds up using react js and node js. we can simply add delete,edit search employee.
 
