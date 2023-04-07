@@ -2,8 +2,17 @@
 
 ## Getting Started
 
-Frontend : https://employee-management-portal.vercel.app/
-Backend : https://employee-management-backend.vercel.app/
+<table>
+  <tr>
+    <td>Fronted</td>
+    <td>https://employee-management-portal.vercel.app/</td>
+  </tr>
+   <tr>
+    <td>Backend</td>
+    <td>https://employee-management-backend.vercel.app </td>
+  </tr>
+</table>
+
 
 Frontend Repository for the solution: https://github.com/LuckyMadu/employee-management-frontend
 
