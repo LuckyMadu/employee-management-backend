@@ -35,9 +35,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest = require("supertest");
 var Employee_1 = require("../Payload/Employee");
+var db_1 = __importDefault(require("../../config/db"));
 var app = require("../../index");
 var createEmployee = function (data) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, statusCode, body;
@@ -56,6 +60,9 @@ var expectation = function (value, toBe) {
     return expect(value).toBe(toBe);
 };
 describe("employee", function () {
+    beforeAll(function () {
+        (0, db_1.default)();
+    });
     it("should return all employees with 200 status code", function () { return __awaiter(void 0, void 0, void 0, function () {
         var statusCode;
         return __generator(this, function (_a) {

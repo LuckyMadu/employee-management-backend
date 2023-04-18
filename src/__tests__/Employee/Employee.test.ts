@@ -1,11 +1,12 @@
 const supertest = require("supertest");
 
-import { EmployeeDTO } from "../../modules/employee/types/Employee.dto";
+import { EmployeeDTO } from "@/modules/employee/types/Employee.dto";
 import {
   employeeCreationData,
   employeeCreationNullValues,
   employeeUpdateData,
 } from "../Payload/Employee";
+import connectDB from "@/config/db";
 
 const app = require("../../index");
 
@@ -21,6 +22,10 @@ const expectation = (value: any, toBe: any) => {
 };
 
 describe("employee", () => {
+  beforeAll(function () {
+    connectDB();
+  });
+
   it("should return all employees with 200 status code", async () => {
     const { statusCode } = await supertest(app).get("/employee/list");
     expectation(statusCode, 200);
