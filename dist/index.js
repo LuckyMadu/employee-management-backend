@@ -15,6 +15,7 @@ var employee_route_1 = require("./modules/employee/routers/employee_route");
 var healthcheck_route_1 = require("./modules/healthcheck/routers/healthcheck_route");
 var swaggerOptions_1 = require("./utils/swaggerOptions");
 var errorHandler_1 = require("./utils/errorHandler");
+var logger_1 = require("./utils/logger");
 //defined port
 var PORT = 3000;
 var app = (0, express_1.default)();
@@ -46,6 +47,8 @@ app.use("/public", express_1.default.static(path_1.default.join(SRC_FOLDER, "pub
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 // app listener
 app.listen(process.env.PORT || PORT, function () {
-    return console.log("Backend server is running on port ".concat(PORT));
+    // prod testing
+    (0, logger_1.setLogger)("info", "Backend server is running on port ".concat(PORT));
+    console.log("Backend server is running on port ".concat(PORT));
 });
 module.exports = app;

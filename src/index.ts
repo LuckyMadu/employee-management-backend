@@ -13,6 +13,7 @@ import { employeeRouter } from "@/modules/employee/routers/employee_route";
 import { healthcheckRouter } from "@/modules/healthcheck/routers/healthcheck_route";
 import { options as swaggerDocument } from "@/utils/swaggerOptions";
 import { errorHandler } from "@/utils/errorHandler";
+import { setLogger } from "@/utils/logger";
 
 //defined port
 const PORT = 3000;
@@ -54,8 +55,10 @@ app.use("/public", express.static(path.join(SRC_FOLDER, "public")));
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 
 // app listener
-app.listen(process.env.PORT || PORT, () =>
-  console.log(`Backend server is running on port ${PORT}`)
-);
+app.listen(process.env.PORT || PORT, () => {
+  // prod testing
+  setLogger("info", `Backend server is running on port ${PORT}`);
+  console.log(`Backend server is running on port ${PORT}`);
+});
 
 module.exports = app;

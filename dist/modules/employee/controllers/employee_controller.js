@@ -64,6 +64,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var employee_service_1 = __importDefault(require("../../../modules/employee/services/employee_service"));
 var response_1 = require("../../../utils/response");
+var logger_1 = require("../../../utils/logger");
 var commonResponseType = __importStar(require("../../../static/static.json"));
 /**
  * get employee lists
@@ -78,6 +79,8 @@ var getAllEmployeeController = function (req, res) { return __awaiter(void 0, vo
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 console.info("Employee lists endpoint...");
+                // prod testing
+                (0, logger_1.setLogger)("info", "Employee lists endpoint...");
                 return [4 /*yield*/, employee_service_1.default.getAllEmployeeService()];
             case 1:
                 data = _a.sent();
@@ -108,6 +111,8 @@ var getSingleEmployeeController = function (req, res) { return __awaiter(void 0,
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 console.info("Single Employee endpoint...");
+                // prod testing
+                (0, logger_1.setLogger)("info", "Single Employee endpoint...");
                 empId = req.params.empId;
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
             case 1:
@@ -143,6 +148,8 @@ var addEmployeeController = function (req, res) { return __awaiter(void 0, void 
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 console.info("Employee creation endpoint...");
+                //prod testing
+                (0, logger_1.setLogger)("info", "Employee creation endpoint...");
                 requestBody = req.body;
                 return [4 /*yield*/, employee_service_1.default.addEmployeeService(requestBody)];
             case 1:
@@ -178,6 +185,8 @@ var updateEmployeeController = function (req, res) { return __awaiter(void 0, vo
             case 0:
                 _a.trys.push([0, 3, , 4]);
                 console.info("Employee update endpoint...");
+                //prod testing
+                (0, logger_1.setLogger)("info", "Employee update endpoint...");
                 empId = req.params.empId;
                 requestBody = req.body;
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
@@ -220,6 +229,8 @@ var deleteEmployeeController = function (req, res) { return __awaiter(void 0, vo
             case 0:
                 _a.trys.push([0, 3, , 4]);
                 console.info("Employee delete endpoint...");
+                //prod testing
+                (0, logger_1.setLogger)("info", "Employee delete endpoint...");
                 empId = req.params.empId;
                 return [4 /*yield*/, employee_service_1.default.getSingleEmployeeService(empId)];
             case 1:
@@ -258,6 +269,8 @@ var searchEmployeeController = function (req, res) { return __awaiter(void 0, vo
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 console.info("Employee search endpoint...");
+                //prod testing
+                (0, logger_1.setLogger)("info", "Employee search endpoint...");
                 query = req.query.query;
                 if (typeof query !== "string") {
                     return [2 /*return*/, res

@@ -4,6 +4,7 @@ import EmployeeService from "@/modules/employee/services/employee_service";
 import { EmployeeDTO } from "@/modules/employee/types/Employee.dto";
 
 import { commonResponse } from "@/utils/response";
+import { setLogger } from "@/utils/logger";
 import * as commonResponseType from "@/static/static.json";
 
 /**
@@ -18,6 +19,8 @@ const getAllEmployeeController = async (
 ) => {
   try {
     console.info("Employee lists endpoint...");
+    // prod testing
+    setLogger("info", "Employee lists endpoint...");
 
     const data = await EmployeeService.getAllEmployeeService();
     const response = commonResponse(
@@ -47,6 +50,9 @@ const getSingleEmployeeController = async (
 ) => {
   try {
     console.info("Single Employee endpoint...");
+    // prod testing
+    setLogger("info", "Single Employee endpoint...");
+
     const { empId } = req.params;
 
     const data = await EmployeeService.getSingleEmployeeService(empId);
@@ -83,6 +89,8 @@ const addEmployeeController = async (
 ) => {
   try {
     console.info("Employee creation endpoint...");
+    //prod testing
+    setLogger("info", "Employee creation endpoint...");
 
     const requestBody: EmployeeDTO = req.body;
 
@@ -125,6 +133,8 @@ const updateEmployeeController = async (
 ) => {
   try {
     console.info("Employee update endpoint...");
+    //prod testing
+    setLogger("info", "Employee update endpoint...");
 
     const { empId } = req.params;
     const requestBody = req.body;
@@ -171,6 +181,8 @@ const deleteEmployeeController = async (
 ) => {
   try {
     console.info("Employee delete endpoint...");
+    //prod testing
+    setLogger("info", "Employee delete endpoint...");
 
     const { empId } = req.params;
 
@@ -209,6 +221,8 @@ const searchEmployeeController = async (
 ) => {
   try {
     console.info("Employee search endpoint...");
+    //prod testing
+    setLogger("info", "Employee search endpoint...");
 
     const { query } = req.query;
 
