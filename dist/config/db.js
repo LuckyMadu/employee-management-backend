@@ -36,7 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
+var logger_1 = require("../utils/logger");
 /**
  * Database connection
  * @returns {Promise<void>}
@@ -53,17 +54,21 @@ var connectDB = function () { return __awaiter(void 0, void 0, void 0, function 
                 // connect to the mongodb database
                 return [4 /*yield*/, mongoose.connect(connectionURI, {
                         useNewUrlParser: true,
-                        useUnifiedTopology: true
+                        useUnifiedTopology: true,
                     })];
             case 1:
                 // connect to the mongodb database
                 _a.sent();
-                console.log('******* DB connected *****');
+                console.log("******* DB connected *****");
+                // prod testing
+                (0, logger_1.setLogger)("info", " DB connected");
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
                 // log the database error
-                console.log('database error', error_1);
+                console.log("database error", error_1);
+                // prod testing
+                (0, logger_1.setLogger)("error", "database error ".concat(error_1));
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

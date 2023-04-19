@@ -14,3 +14,13 @@
 {"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
 {"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
 {"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"error","message":"database error MongoServerError: bad auth : authentication failed","service":"employee-service"}
+{"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"info","message":" DB connected","service":"employee-service"}
+{"level":"info","message":"Backend server is running on port 3000","service":"employee-service"}
+{"level":"info","message":" DB connected","service":"employee-service"}

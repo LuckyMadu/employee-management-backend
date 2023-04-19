@@ -1,0 +1,1 @@
+{"level":"error","message":"database error MongoServerError: bad auth : authentication failed","service":"employee-service"}
